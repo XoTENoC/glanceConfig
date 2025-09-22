@@ -1,88 +1,123 @@
 - name: Home
   # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
-  # hide-desktop-navigation: true
+  hide-desktop-navigation: true
+
+  head-widgets:
+    - type: monitor
+      cache: 1m
+      title: Services
+      sites:
+        - title: Jellyfin
+          url: ${JELLYFIN_URL}
+          icon: /assets/img/jellyfin-logo.png
+        - title: Home Assistant (HOME)
+          url: ${HOME_HOME_ASSISTANT_URL}
+          icon: /assets/img/home-assistant-logo.png
+        - title: Home Assistant (OFFICE)
+          url: ${OFFICE_HOME_ASSISTANT_URL}
+          icon: /assets/img/home-assistant-logo.png
+        - title: NetBox
+          url: ${NETBOX_URL}
+          icon: /assets/img/netbox-logo.png
+        - title: n8n
+          url: ${N8N_URL}
+          icon: /assets/img/n8n-logo.png
+
+
   columns:
     - size: small
       widgets:
         - type: calendar
-          first-day-of-week: monday
+          first-day-of-week: sunday
 
-        - type: rss
-          limit: 10
-          collapse-after: 3
-          cache: 12h
-          feeds:
-            - url: https://selfh.st/rss/
-              title: selfh.st
-            - url: https://ciechanow.ski/atom.xml
-            - url: https://www.joshwcomeau.com/rss.xml
-              title: Josh Comeau
-            - url: https://samwho.dev/rss.xml
-            - url: https://ishadeed.com/feed.xml
-              title: Ahmad Shadeed
+        - type: weather
+          units: metric
+          hour-format: 24h
+          location: Adelaide, Australia
 
-        - type: twitch-channels
-          channels:
-            - theprimeagen
-            - j_blow
-            - giantwaffle
-            - cohhcarnage
-            - christitustech
-            - EJ_SA
+        - type: clock
+          hour-format: 24h
+          timezones:
+            - timezone: America/Chicago
+              label: Austin
+            - timezone: America/Denver
+              label: Denver
+            - timezone: America/Argentina/Buenos_Aires
+              label: Argentina
+            - timezone: America/Mexico_City
+              label: Mexico
+            - timezone: America/Lima
+              label: Peru
+            - timezone: America/New_York
+              label: Washington
+            - timezone: Australia/Sydney
+              label: Sydney
 
     - size: full
       widgets:
-        - type: group
+
+        - type: search
+          serach-engine: duckduckgo
+
+        - type: split-column
           widgets:
             - type: hacker-news
+              collapse-after: 3
             - type: lobsters
-
-        - type: videos
-          channels:
-            - UCXuqSBlHAE6Xw-yeJA0Tunw # Linus Tech Tips
-            - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
-            - UCsBjURrPoezykLs9EqgamOA # Fireship
-            - UCBJycsmduvYEL83R_U4JriQ # Marques Brownlee
-            - UCHnyfMqiRRG1u-2MsSQLbXA # Veritasium
+              collapse-after: 3
 
         - type: group
           widgets:
             - type: reddit
-              subreddit: technology
-              show-thumbnails: true
+              subreddit: vuejs
+              collapse-after: 5
             - type: reddit
-              subreddit: selfhosted
-              show-thumbnails: true
+              subreddit: typescript
+              collapse-after: 5
+            - type: reddit
+              subreddit: adelaide
+              collapse-after: 5
 
     - size: small
       widgets:
-        - type: weather
-          location: London, United Kingdom
-          units: metric # alternatively "imperial"
-          hour-format: 12h # alternatively "24h"
-          # Optionally hide the location from being displayed in the widget
-          # hide-location: true
-
-        - type: markets
-          markets:
-            - symbol: SPY
-              name: S&P 500
-            - symbol: BTC-USD
-              name: Bitcoin
-            - symbol: NVDA
-              name: NVIDIA
-            - symbol: AAPL
-              name: Apple
-            - symbol: MSFT
-              name: Microsoft
-
-        - type: releases
-          cache: 1d
-          # Without authentication the Github API allows for up to 60 requests per hour. You can create a
-          # read-only token from your Github account settings and use it here to increase the limit.
-          # token: ...
-          repositories:
-            - glanceapp/glance
-            - go-gitea/gitea
-            - immich-app/immich
-            - syncthing/syncthing
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Outlook
+                  url: https://outlook.office365.com/mail/
+                - title: Github
+                  url: https://www.github.com/
+                - title: Github Notifications
+                  url: https://github.com/notifications
+                - title: Jira
+                  url: https://multitracks.atlassian.net/
+                - title: Jira Todo
+                  url: https://multitracks.atlassian.net/issues/?filter=10258
+                - title: Confluence
+                  url: https://multitracks.atlassian.net/wiki/home
+            - title: Repos
+              color: 10 70 50
+              links:
+                - title: Multitracks.com (Master)
+                  url: https://github.com/MultiTracksDotCom/multitracks.com
+                - title: Melodies (Master)
+                  url: https://github.com/MultiTracksDotCom/melodies
+                - title: Chromatics (Master)
+                  url: https://github.com/MultiTracksDotCom/chromatics
+                - title: Multitracks (Dev)
+                  url: https://github.com/XoTENoC/multitracks.com
+                - title: Melodies (Dev)
+                  url: https://github.com/XoTENoC/melodies
+                - title: Chromatics (Dev)
+                  url: https://github.com/XoTENoC/chromatics
+            - title: Tactical
+              color: 200 50 50
+              links:
+                - title: Frontend Tactical
+                  url: https://multitracks.atlassian.net/jira/software/c/projects/MT/boards/125
+                - title: Tactical Time
+                  url: https://jira.multitracks.com/Tactical?group=fed
+                - title: ScoreCard
+                  url: https://app.ninety.io/data-v2/673c9b9bcc52cf0019186bb3
+                - title: L10 Meeting
+                  url: https://app.ninety.io/meetings
