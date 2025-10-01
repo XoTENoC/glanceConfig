@@ -19,9 +19,24 @@
         - title: NetBox
           url: ${NETBOX_URL}
           icon: /assets/img/netbox-logo.png
-        - title: n8n
-          url: ${N8N_URL}
-          icon: /assets/img/n8n-logo.png
+        - title: Audiobookshelf
+          url: ${AUDIOBOOKSHELF_URL}
+          icon: /assets/img/audiobookshelf-logo.png
+        - title: Prowlarr
+          url: ${PROWLARR_URL}
+          icon: /assets/img/prowlarr-logo.png
+        - title: Radarr
+          url: ${RADARR_URL}
+          icon: /assets/img/radarr-logo.png
+        - title: Sonarr
+          url: ${SONARR_URL}
+          icon: /assets/img/sonarr-logo.png
+        - title: Lidarr
+          url: ${LIDARR_URL}
+          icon: /assets/img/lidarr-logo.png
+        - title: Sabnzbd
+          url: ${SABNZBD_URL}
+          icon: /assets/img/sabnzbd-logo.png
 
 
   columns:
