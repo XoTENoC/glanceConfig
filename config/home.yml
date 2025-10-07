@@ -136,3 +136,27 @@
                   url: https://app.ninety.io/data-v2/673c9b9bcc52cf0019186bb3
                 - title: L10 Meeting
                   url: https://app.ninety.io/meetings
+
+        - type: custom-api
+          title: Fuel Prices
+          cache: 1h
+          url: https://petrolspy.com.au/webservice-1/station/box?neLat=-34.863236&neLng=138.583186&swLat=-34.864225&swLng=138.582256&ts=1758465511935&_=1758465510657
+          template: |
+            <ul class="list list-gap-10">
+            {{ range .JSON.Array "message.list" }}
+              <li>
+                <div class="size-h4 color-highlight">{{ .String "name" }}</div>
+                <ul>
+                  {{ if .Exists "prices.U91" }}
+                    <li>U91: {{ div (.Float "prices.U91.amount") 100 | printf "$%.3f" }}</li>
+                  {{ end }}
+                  {{ if .Exists "prices.U98" }}
+                    <li>U98: {{ div (.Float "prices.U98.amount") 100 | printf "$%.3f" }}</li>
+                  {{ end }}
+                  {{ if .Exists "prices.PremDSL" }}
+                    <li class="color-positive">Diesel: {{ div (.Float "prices.PremDSL.amount") 100 | printf "$%.3f" }}</li>
+                  {{ end }}
+                </ul>
+              </li>
+            {{ end }}
+            </ul>
