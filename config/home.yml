@@ -108,6 +108,8 @@
                   url: https://multitracks.atlassian.net/
                 - title: Jira Todo
                   url: https://multitracks.atlassian.net/issues/?filter=10258
+                - title: Jira Dev QA
+                  url: https://multitracks.atlassian.net/issues/?filter=11425
                 - title: Confluence
                   url: https://multitracks.atlassian.net/wiki/home
             - title: Repos
